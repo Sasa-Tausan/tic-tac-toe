@@ -1,3 +1,3 @@
 export function GameStart() {
-  return <main>Game Start</main>;
+  return <>Game Start</>;
 }
