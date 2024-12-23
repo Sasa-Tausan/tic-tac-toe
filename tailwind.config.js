@@ -17,10 +17,11 @@ export default {
     },
 
     boxShadow: {
-      innerCustomYellow: "2px -12px 0px -4px rgba(204,139,14,1) inset",
+      innerCustomYellow: "0px -8px 0px 0px rgba(204,139,14,1) inset",
       innerCustomBlue: "2px -12px 0px -4px rgba(18,130,124,1) inset;",
-      innerCustomElement: "2px -8px 0px -1px rgba(15,34,42,1) inset;",
+      innerCustomElement: " 0px -8px 0px 0px rgba(16,33,42,1) inset;",
       innerCustomSilver: "2px -8px 0px -2px rgba(107,137,151,1) inset;",
+      none: "none",
     },
 
     fontSize: {
