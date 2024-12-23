@@ -1,6 +1,6 @@
 export function SelectLevel() {
   return (
-    <section className="flex flex-col justify-between w-full gap-3 p-4 bg-semiDarkNavy rounded-xl">
+    <section className="flex flex-col justify-between w-full gap-3 p-5 bg-semiDarkNavy rounded-xl shadow-innerCustomElement">
       <h4 className="uppercase text-headingXSmall text-silver">choose difficulty level</h4>
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-4">
