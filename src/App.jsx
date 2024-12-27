@@ -8,8 +8,9 @@ export function App() {
     playerOne: "X",
     playerTwo: "O",
   });
-  const [isGameStarted, setIsGameStarted] = useState(true);
+  const [isGameStarted, setIsGameStarted] = useState(false);
   const [gameLevel, setGameLevel] = useState("");
+  const [activePlayer, setActivePlayer] = useState("X");
 
   function handleGameStart() {
     setIsGameStarted(true);
@@ -17,21 +18,31 @@ export function App() {
 
   function handleGameLevel(e) {
     const id = e.target.id;
+
     setGameLevel(id);
   }
 
-  function choosePlayerMark(mark) {
+  function handlePlayerMark(mark) {
     setPlayers({
       playerOne: mark,
       playerTwo: mark === "X" ? "O" : "X",
     });
   }
 
+  function handleSwitchPlayer(player) {
+    const updatedValue = player === "X" ? "O" : "X";
+    setActivePlayer(updatedValue);
+  }
+
   return (
     <div className="grid h-screen place-items-center bg-darkNavy ">
       <MainPageLayout rowGap={isGameStarted ? "gap-5" : "gap-10"}>
         {isGameStarted ? (
-          <GameStart />
+          <GameStart
+            gameLevel={gameLevel}
+            handleSwitchPlayer={handleSwitchPlayer}
+            activePlayer={activePlayer}
+          />
         ) : (
           <GameMenu
             players={players}
@@ -39,7 +50,7 @@ export function App() {
             gameLevel={gameLevel}
             handleGameStart={handleGameStart}
             handleGameLevel={handleGameLevel}
-            choosePlayerMark={choosePlayerMark}
+            handlePlayerMark={handlePlayerMark}
           />
         )}
       </MainPageLayout>

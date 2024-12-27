@@ -1,29 +1,47 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { initialBoard } from "../../utils/constants";
 import { Tile } from "./Tile";
+import { getTileCoordinate } from "../../utils/helperFunctions";
 
-export function Board() {
+export function Board({ handleSwitchPlayer, activePlayer }) {
   const [gameBoard, setGameBoard] = useState(initialBoard);
+
+  function handleBoard(e) {
+    const [row, col] = getTileCoordinate(e);
+    console.log(row, col);
+
+    setGameBoard((prevState) => {
+      const updatedBoard = [...prevState];
+      updatedBoard[row][col] = activePlayer;
+      return updatedBoard;
+    });
+
+    handleSwitchPlayer(activePlayer);
+  }
+
   return (
-    <section className="flex flex-col w-full gap-5">
+    <section className="grid w-full grid-cols-3 gap-5">
       {gameBoard.map((row, rowIndex) => {
-        return (
-          <div
-            className="flex items-center justify-between gap-5"
-            key={rowIndex}
-          >
-            {row.map((tile, colIndex) => {
-              return (
-                <Tile
-                  key={`${rowIndex}-${colIndex}`}
-                  rowIndex={rowIndex}
-                  colIndex={colIndex}
-                />
-              );
-            })}
-          </div>
-        );
+        {
+          return row.map((tile, colIndex) => {
+            return (
+              <Tile
+                key={`${rowIndex}-${colIndex}`}
+                rowIndex={rowIndex}
+                colIndex={colIndex}
+                handleBoard={handleBoard}
+                tile={tile}
+              />
+            );
+          });
+        }
       })}
     </section>
   );
 }
+
+Board.propTypes = {
+  activePlayer: PropTypes.string,
+  handleSwitchPlayer: PropTypes.func,
+};

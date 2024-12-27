@@ -9,14 +9,14 @@ export function GameMenu({
   gameLevel,
   handleGameStart,
   handleGameLevel,
-  choosePlayerMark,
+  handlePlayerMark,
 }) {
   return (
     <>
       <Logo />
       <section className="flex flex-col items-center w-full gap-6 p-6 bg-semiDarkNavy rounded-2xl shadow-innerCustomElement">
         <p className="uppercase text-headingXSmall text-silver">pick player 1&apos;s mark</p>
-        <ChoosePlayerMark choosePlayerMark={choosePlayerMark} players={players} />
+        <ChoosePlayerMark choosePlayerMark={handlePlayerMark} players={players} />
         <p className="uppercase text-headingXSmall text-silver">remember: x goes first</p>
       </section>
       <PrimaryButton
@@ -35,5 +35,5 @@ GameMenu.propTypes = {
   gameLevel: PropTypes.string,
   handleGameStart: PropTypes.func,
   handleGameLevel: PropTypes.func,
-  choosePlayerMark: PropTypes.func,
+  handlePlayerMark: PropTypes.func,
 };
