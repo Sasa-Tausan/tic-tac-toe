@@ -12,6 +12,7 @@ export function GameStart() {
         <PlayersTurn />
         <SecondaryButton isImageBtn />
       </div>
+      <p className="uppercase text-silver text-headingSmall">game level: medium</p>
       <Board />
       <Scoreboard />
     </>
