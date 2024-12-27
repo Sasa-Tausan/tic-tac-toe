@@ -1,4 +1,6 @@
-export function IconOutlineX(width, height, fill, stroke) {
+import PropTypes from "prop-types";
+
+export function IconOutlineX({ width, height, fill, stroke }) {
   return (
     <svg width={width} height={height} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <path
@@ -10,3 +12,10 @@ export function IconOutlineX(width, height, fill, stroke) {
     </svg>
   );
 }
+
+IconOutlineX.propTypes = {
+  width: PropTypes.string,
+  height: PropTypes.string,
+  fill: PropTypes.string,
+  stroke: PropTypes.string,
+};

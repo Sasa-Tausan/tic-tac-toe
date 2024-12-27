@@ -1,15 +1,42 @@
+import PropTypes from "prop-types";
 import { IconOutlineO } from "../../components/Icons/IconOutlineO";
 import { IconX } from "../../components/Icons/IconX";
+import { IconOutlineX } from "../../components/Icons/IconOutlineX";
+import { IconO } from "../../components/Icons/IconO";
 
-export function ChoosePlayerMark() {
+export function ChoosePlayerMark({ choosePlayerMark, players }) {
+  const isPlayerOneX = players.playerOne === "X";
   return (
     <div className="flex w-full gap-3 p-2 rounded-lg bg-darkNavy">
-      <button className="grid flex-1 place-items-center">
-        <IconX width="32" height="32" fill="#A8BFC9" />
+      <button
+        className={`grid flex-1 py-3 rounded-lg place-items-center ${
+          isPlayerOneX ? "bg-silver" : ""
+        } `}
+        onClick={() => choosePlayerMark("X")}
+      >
+        {isPlayerOneX ? (
+          <IconOutlineX width="32" height="32" stroke="#1A2A33" fill="#1A2A33" />
+        ) : (
+          <IconX width="32" height="32" fill="#A8BFC9" />
+        )}
       </button>
-      <button className="grid flex-1 py-3 rounded-lg place-items-center bg-silver">
-        <IconOutlineO width="32" height="32" stroke="#1A2A33" fill="#1A2A33" />
+      <button
+        className={`grid flex-1 py-3 rounded-lg place-items-center ${
+          !isPlayerOneX ? "bg-silver" : ""
+        } `}
+        onClick={() => choosePlayerMark("O")}
+      >
+        {!isPlayerOneX ? (
+          <IconOutlineO width="32" height="32" stroke="#1A2A33" fill="#1A2A33" />
+        ) : (
+          <IconO width="32" height="32" fill="#A8BFC9" />
+        )}
       </button>
     </div>
   );
 }
+
+ChoosePlayerMark.propTypes = {
+  players: PropTypes.object,
+  choosePlayerMark: PropTypes.func,
+};
