@@ -2,7 +2,7 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import { initialBoard } from "../../utils/constants";
 import { Tile } from "./Tile";
-import { getTileCoordinate } from "../../utils/helperFunctions";
+import { checkIsBoardFull, getTileCoordinate } from "../../utils/helperFunctions";
 
 export function Board({ handleSwitchPlayer, activePlayer }) {
   const [gameBoard, setGameBoard] = useState(initialBoard);
@@ -16,9 +16,12 @@ export function Board({ handleSwitchPlayer, activePlayer }) {
       updatedBoard[row][col] = activePlayer;
       return updatedBoard;
     });
+    const isBoardFull = checkIsBoardFull(gameBoard);
 
     handleSwitchPlayer(activePlayer);
   }
+
+  console.log(gameBoard.flat().every((tile) => tile !== " "));
 
   return (
     <section className="grid w-full grid-cols-3 gap-5">
